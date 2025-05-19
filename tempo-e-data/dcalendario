@@ -1,0 +1,12 @@
+dcalendario = 
+var _inicio = STARTOFYEAR( FIRSTDATE( fDados[Data] ) )
+var _final = ENDOFYEAR( LASTDATE( fDados[Data] ) )
+var _datas = CALENDAR( _inicio, _final )
+return
+ADDCOLUMNS(
+    SELECTCOLUMNS( _datas, "Data", [Date] ),
+    "Ano", YEAR( [Data] ),
+    "Nome do mês", FORMAT( [Data], "mmmm", "pt-BR" ),
+    "Nome do mês abreviado", FORMAT( [Data], "mmm", "pt-BR" ),
+    "Número do mês", MONTH( [Data] )
+)
