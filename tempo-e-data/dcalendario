@@ -1,12 +1,13 @@
-dcalendario = 
-var _inicio = STARTOFYEAR( FIRSTDATE( fDados[Data] ) )
-var _final = ENDOFYEAR( LASTDATE( fDados[Data] ) )
-var _datas = CALENDAR( _inicio, _final )
-return
-ADDCOLUMNS(
-    SELECTCOLUMNS( _datas, "Data", [Date] ),
-    "Ano", YEAR( [Data] ),
-    "Nome do mês", FORMAT( [Data], "mmmm", "pt-BR" ),
-    "Nome do mês abreviado", FORMAT( [Data], "mmm", "pt-BR" ),
-    "Número do mês", MONTH( [Data] )
+Calendario = 
+ADDCOLUMNS (
+    CALENDAR (DATE(2016,01,01), DATE(2019,12,31)),
+    "Ano", YEAR([Date]),
+    "Mês", MONTH([Date]),
+    "Ano-Mês", FORMAT([Date], "YYYY-MM"),
+    "Mês Nome", FORMAT([Date], "MMMM"),
+    "Mês Curto", FORMAT([Date], "MMM"),
+    "Trimestre", "T" & FORMAT([Date], "Q"),
+    "Dia", DAY([Date]),
+    "Dia da Semana", WEEKDAY([Date],2),
+    "Dia da Semana Nome", FORMAT([Date], "dddd")
 )
